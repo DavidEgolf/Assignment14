@@ -6,18 +6,22 @@ public class CAI
 	{
 		Scanner in = new Scanner(System.in); // need to read information
 		CAIClass assistance = new CAIClass();
-		assistance.generateProblem();
-		while(assistance.isIncorrect())
+		while(true)
 		{
-			assistance.printProblem();
-			int answer = in.nextInt();
-			if (assistance.checkProblem(answer))
+			assistance.generateProblem();
+			while(assistance.isIncorrect())
 			{
-				assistance.setIncorrect(false);
-				System.out.println("Very good!");
+				assistance.printProblem();
+				int answer = in.nextInt();
+				if (assistance.checkProblem(answer))
+				{
+					assistance.setIncorrect(false);
+					System.out.println(assistance.generateCorrectMessage());
+				}
+				else
+					System.out.println(assistance.generateIncorrectMessage());
 			}
-			else
-				System.out.println("No. Please try again.");
+		assistance.setIncorrect(true);
 		}
 	}
 }
