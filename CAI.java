@@ -6,15 +6,14 @@ public class CAI
 	{
 		Scanner in = new Scanner(System.in); // need to read information
 		CAIClass assistance = new CAIClass();
-		boolean incorrect = true;
 		assistance.generateProblem();
-		while(incorrect)
+		while(assistance.isIncorrect())
 		{
 			assistance.printProblem();
 			int answer = in.nextInt();
 			if (assistance.checkProblem(answer))
 			{
-				incorrect = false;
+				assistance.setIncorrect(false);
 				System.out.println("Very good!");
 			}
 			else

@@ -3,11 +3,23 @@ import java.util.Random; // Random number class
 public class CAIClass
 {
 	int randomValue1, randomValue2;
+	boolean incorrect;
 	
 	CAIClass()
 	{
 		randomValue1 = 0;
 		randomValue2 = 0;
+		incorrect = true;
+	}
+	
+	public boolean isIncorrect()
+	{
+		return incorrect;
+	}
+	
+	public void setIncorrect(boolean isIncorrect)
+	{
+		incorrect = isIncorrect;
 	}
 	
 	public void generateProblem()
