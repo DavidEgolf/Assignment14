@@ -1,20 +1,18 @@
 import java.util.Scanner; // Scanner class
-import java.util.Random; // Random number class
 
 public class CAI
 {
 	public static void main(String [] args)
 	{
 		Scanner in = new Scanner(System.in); // need to read information
+		CAIClass assistance = new CAIClass();
 		boolean incorrect = true;
-		Random randomList = new Random();
-		int randomValue1 = randomList.nextInt(10);
-		int randomValue2 = randomList.nextInt(10);
+		assistance.generateProblem();
 		while(incorrect)
 		{
-			System.out.printf("What is %d * %d: ", randomValue1, randomValue2);
+			assistance.printProblem();
 			int answer = in.nextInt();
-			if (answer == randomValue1 * randomValue2)
+			if (assistance.checkProblem(answer))
 			{
 				incorrect = false;
 				System.out.println("Very good!");
