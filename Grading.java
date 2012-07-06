@@ -1,20 +1,21 @@
 public class Grading
 {
 	private int correct; // correct holds the number of correct answers
+	private int incorrect; // incorrect holds the number of incorrect answers
 	private int total; // total holds the total number of problems
 	
 	// constructor, one arguement that is the total
 	//     number of problems
 	Grading(int tempTotal)
 	{
-		correct = 0; // zero the correct answers
+		correct = incorrect = 0; // zero the correct answers
 		total = tempTotal; // set the total number of problems
 	} // end constructor: Grading(int)
 	
 	// constructor, no arguements defaults to 10 problems
 	Grading()
 	{
-		correct = 0; // zero the correct answers
+		correct = incorrect = 0; // zero the correct answers
 		total = 10; // set the total number of problems, default
 	} // end constructor: Grading()
 	
@@ -27,8 +28,7 @@ public class Grading
 	// this method is called when an incorrect answer is presented
 	public void markIncorrect()
 	{
-		// does nothing since correct doesn't get incrememtned.
-		// this method is mostly placeholder for potential future use.
+		incorrect++; // increment the incorrect answer variable by 1
 	} // end markIncorrect()
 	
 	// getCorrect returns the total number of correct answers
