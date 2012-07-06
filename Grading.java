@@ -1,3 +1,21 @@
+//
+// Assignment 14, Computer-Assisted Instruction (Grading Class)
+//
+// This class handles the correct/incorrect numbers to grade the user
+// to hide it from the CAIClass. Just to seperate it a bit.
+//
+// Author: David S. Egolf
+// Creation date: July 5, 2012
+// Initial coding completion date: July 6, 2012
+//
+// Dependencies
+//
+// N/A
+//
+// Bug Table
+//
+// N/A
+
 public class Grading
 {
 	private int correct; // correct holds the number of correct answers
@@ -46,7 +64,8 @@ public class Grading
 	// returns the percentage correct answers
 	public double getPercent()
 	{
-		return 100.0 * correct / total; // multiply by 100 to get percent, 100.0 to force double
+		return 100.0 * correct / total; // multiply by 100 to get percent,
+		                                // 100.0 to force double
 	} // end getPercent()
 	
 	// reset() resets the correct/incorrect variables for next 'student'
