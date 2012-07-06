@@ -4,11 +4,12 @@ public class CAI
 {
 	public static void main(String [] args)
 	{
+		final int numProblems = 10;
 		Scanner in = new Scanner(System.in); // need to read information
-		CAIClass assistance = new CAIClass();
+		CAIClass assistance = new CAIClass(numProblems);
 		while(true)
 		{
-			for(int problemLoop = 0; problemLoop < 10; problemLoop++)
+			for(int problemLoop = 0; problemLoop < numProblems; problemLoop++)
 			{
 				assistance.generateProblem();
 				while(assistance.isIncorrect())
