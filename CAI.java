@@ -27,9 +27,9 @@ public class CAI
 				System.out.println(assistance.getPercent());
 			}
 			System.out.printf("You scored %d/%d, that's a %f%%.\n",
-																assistance.getCorrect(),
-																assistance.getTotal(),
-																assistance.getPercent());
+			                  assistance.getCorrect(),
+			                  assistance.getTotal(),
+			                  assistance.getPercent());
 			assistance.resetGrade();
 		}
 	}
