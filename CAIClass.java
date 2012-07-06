@@ -5,6 +5,7 @@ public class CAIClass
 	private int randomValue1, randomValue2;
 	private boolean incorrect;
 	private Random randomList = new Random();	
+	private Grading gradeBook = new Grading(10);
 	
 	CAIClass()
 	{
@@ -31,7 +32,12 @@ public class CAIClass
 	
 	public boolean checkProblem(int answer)
 	{
-		return answer == randomValue1 * randomValue2;
+		if(answer == randomValue1 * randomValue2)
+		{
+			gradeBook.markCorrect();
+			return true;
+		}
+		return false;
 	}
 	
 	public void printProblem()
@@ -69,5 +75,25 @@ public class CAIClass
 				return "No. Keep trying.";
 		}
 		return "";
+	}
+	
+	public void resetGrade()
+	{
+		gradeBook.reset();
+	}
+	
+	public int getCorrect()
+	{
+		return gradeBook.getCorrect();
+	}
+	
+	public int getTotal()
+	{
+		return gradeBook.getTotal();
+	}
+	
+	public double getPercent()
+	{
+		return gradeBook.getPercent();
 	}
 }

@@ -8,20 +8,29 @@ public class CAI
 		CAIClass assistance = new CAIClass();
 		while(true)
 		{
-			assistance.generateProblem();
-			while(assistance.isIncorrect())
+			for(int problemLoop = 0; problemLoop < 10; problemLoop++)
 			{
-				assistance.printProblem();
-				int answer = in.nextInt();
-				if (assistance.checkProblem(answer))
+				assistance.generateProblem();
+				while(assistance.isIncorrect())
 				{
-					assistance.setIncorrect(false);
-					System.out.println(assistance.generateCorrectMessage());
+					assistance.printProblem();
+					int answer = in.nextInt();
+					if (assistance.checkProblem(answer))
+					{
+						assistance.setIncorrect(false);
+						System.out.println(assistance.generateCorrectMessage());
+					}
+					else
+						System.out.println(assistance.generateIncorrectMessage());
 				}
-				else
-					System.out.println(assistance.generateIncorrectMessage());
+				assistance.setIncorrect(true);
+				System.out.println(assistance.getPercent());
 			}
-		assistance.setIncorrect(true);
+			System.out.printf("You scored %d/%d, that's a %f%%.\n",
+																assistance.getCorrect(),
+																assistance.getTotal(),
+																assistance.getPercent());
+			assistance.resetGrade();
 		}
 	}
 }
