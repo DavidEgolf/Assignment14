@@ -32,6 +32,11 @@ public class CAI
 			                  assistance.getTotal(),
 			                  assistance.getPercent()); // print the score after 10 problems
 			                  
+			if(assistance.getPercent() < 75)
+				System.out.println("Please ask your teacher for extra help.");
+			else
+				System.out.println("Congratulations, you are ready to move on to the next level!");
+			                  
 			assistance.resetGrade(); // reset the grade for next 'student'
 		} // end main while loop
 	} // end main()
