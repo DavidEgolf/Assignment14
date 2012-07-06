@@ -4,11 +4,19 @@ public class CAI
 {
 	public static void main(String [] args)
 	{
-		final int numProblems = 10; // constant number
+		final int numProblems = 10; // this is a "hack" for a "constant"
 		Scanner in = new Scanner(System.in); // need to read information
 		CAIClass assistance = new CAIClass(numProblems); // Computer-Assisted Instruction object
+		
 		while(true) // forever...
 		{
+			do
+			{
+				System.out.print("What dificulty would you like (positive number only): "); // prompt for dificulty
+			}while(!assistance.setDificulty(in.nextInt())); // read/send dificulty to assistance
+			// the previous statement has the logical not so that it returns true when it works,
+			// and false when it doesn't. it has to loop when true, thus not false
+			
 			for(int problemLoop = 0; problemLoop < numProblems; problemLoop++) // give student numProb problems
 			{
 				assistance.generateProblem(); // generate new problem
@@ -38,6 +46,7 @@ public class CAI
 				System.out.println("Congratulations, you are ready to move on to the next level!");
 			                  
 			assistance.resetGrade(); // reset the grade for next 'student'
+			System.out.println(); // newline to clear stuff up
 		} // end main while loop
 	} // end main()
 } // end public class CAI
