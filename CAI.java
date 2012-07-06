@@ -12,25 +12,26 @@ public class CAI
 			for(int problemLoop = 0; problemLoop < numProblems; problemLoop++) // give student numProb problems
 			{
 				assistance.generateProblem(); // generate new problem
-				while(assistance.isIncorrect()) // while incorrect (dep 6.37)
+				assistance.printProblem(); // print the problem
+				int answer = in.nextInt(); // get answer
+				
+				if (assistance.checkProblem(answer)) // check answer
 				{
-					assistance.printProblem(); // print the problem
-					int answer = in.nextInt(); // get answer
-					if (assistance.checkProblem(answer)) // check answer
-					{
-						assistance.setIncorrect(false); // if correct, set incorrect to false
-						System.out.println(assistance.generateCorrectMessage()); // print correct message
-					} // end if(checkProblem)
-					else // otherwise
-						System.out.println(assistance.generateIncorrectMessage()); // print incorrect message
-				} // end while(assistance.isIncorrect())
-				assistance.setIncorrect(true); // set it to incorrect, prevent looping error
+					System.out.println(assistance.generateCorrectMessage()); // print correct message
+				} // end if(checkProblem)
+				else
+				{ // otherwise
+					System.out.println(assistance.generateIncorrectMessage()); // print incorrect message
+				}
+					
 				// System.out.println(assistance.getPercent()); // debug statement
 			} // end for(i = 0; i < 10; i++) problem presentation loop
+			
 			System.out.printf("You scored %d/%d, that's a %f%%.\n",
 			                  assistance.getCorrect(),
 			                  assistance.getTotal(),
 			                  assistance.getPercent()); // print the score after 10 problems
+			                  
 			assistance.resetGrade(); // reset the grade for next 'student'
 		} // end main while loop
 	} // end main()
