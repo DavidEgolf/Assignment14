@@ -2,7 +2,9 @@ import java.util.Random; // Random number class
 
 public class CAIClass
 {
-	private int randomValue1, randomValue2; // the two random numbers for problem
+	private int randomValue1; // the first random number for problem
+	private int randomValue2; // the second random numbers for problem
+	private int dificulty; // dificulty of problem
 	private boolean incorrect; // this variable depreciated,
 	                           // previously used to loop until correct answer
 	                           // presented, as per 6.35. unused as of 6.37
@@ -12,21 +14,27 @@ public class CAIClass
 	// default constructor, zeroes stuff, and defautls a new gradebook
 	CAIClass()
 	{
-		randomValue1 = 0; // set default to 0
-		randomValue2 = 0; // set default to 0
-		incorrect = true; // incorrect to prevent looping, depreciated 6.37
+		initStatic();
 		gradeBook = new Grading(10); // default to 10 grades
 	} // end constructor: CAIClass()
 	
 	// bonus constructor! specify number of problems
 	CAIClass(int numProb)
 	{
-		randomValue1 = 0; // set default to 0
-		randomValue2 = 0; // set default to 0
-		incorrect = true; // incorrect to prevent looping, depreciated 6.37
+		initStatic();
 		gradeBook = new Grading(numProb); // if CAIClass is called with an arguement,
 		                                  // pass it on to gradeBook() as this is num of problems
 	} // end constructor: CAIClass(int)
+	
+	// added as per 6.38, called in both constructors, easier to manage if seperate method
+	// intiStatic() initializes the variables that aren't different between constructors
+	private void initStatic()
+	{
+		randomValue1 = 0; // set default to 0
+		randomValue2 = 0; // set default to 0
+		dificulty = 0; // set default to 0
+		incorrect = true; // incorrect to prevent looping, depreciated 6.37
+	} // end initStatic()
 	
 	// isIncorrect is getter for whether the answer was incorrect
 	public boolean isIncorrect() // depreciated as of 6.37
@@ -43,8 +51,10 @@ public class CAIClass
 	// generateProblem() generates two random integers for the problem
 	public void generateProblem()
 	{
-		randomValue1 = randomList.nextInt(10); // generate the first random int
-		randomValue2 = randomList.nextInt(10); // generate the second random int
+		Double tempD;
+		tempD = new Double(Math.pow(10, dificulty));
+		randomValue1 = randomList.nextInt(tempD.intValue()); // generate the first random int
+		randomValue2 = randomList.nextInt(tempD.intValue()); // generate the second random int
 	} // end generateProblem()
 	
 	// checkProblem() check the answer given against the actual answer
@@ -117,11 +127,24 @@ public class CAIClass
 	// getTotal() is getter for the total number of problems
 	public int getTotal()
 	{
-		return gradeBook.getTotal();
-	}
+		return gradeBook.getTotal(); // returns the total number of problems in gradeBook
+	} // end getTotal()
 	
+	// getPercent gets the percent correct/total from gradebook
 	public double getPercent()
 	{
-		return gradeBook.getPercent();
-	}
-}
+		return gradeBook.getPercent(); // pass it back up through
+	} // end getPercent()
+	
+	// setDificulty sets the dificulty of problems
+	// returns boolean as to whether successful or not
+	public boolean setDificulty(int dif)
+	{
+		if(dif > 0) // if acceptable
+		{
+			dificulty = dif; // set it
+			return true; // let the caller know
+		}
+		return false; // otherwise, didn't work
+	} // end setDificulty(int)
+} // end public class CAIClass
