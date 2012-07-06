@@ -49,8 +49,10 @@ public class Grading
 		return 100.0 * correct / total; // multiply by 100 to get percent, 100.0 to force double
 	} // end getPercent()
 	
+	// reset() resets the correct/incorrect variables for next 'student'
 	public void reset()
 	{
-		correct = 0;
-	}
+		correct = 0; // zero correct
+		incorrect = 0; // zero incorrect
+	} // end reset()
 } // end public class Grading
