@@ -20,6 +20,7 @@ import java.util.Scanner; // Scanner class
 
 public class CAI // open the CAI class up
 {
+	// main program function (method)
 	public static void main(String [] args)
 	{
 		final int numProblems = 10; // this is a "hack" for a "constant"
@@ -43,6 +44,7 @@ public class CAI // open the CAI class up
 		} // end main while loop
 	} // end main()
 	
+	// promptDificulty prompts the user and gets the dificulty of the problems
 	private static void promptDificulty(CAIClass assistance, Scanner in)
 	{
 		do // loop for getting dificulty till it's valid
@@ -52,6 +54,7 @@ public class CAI // open the CAI class up
 		// and false when it doesn't. it has to loop when true, thus not false
 	} // end promptDificulty(CAIClass, Scanner)
 	
+	// promptProblemType promtps the user and gets the type of problems that should be presented
 	private static void promptProblemType(CAIClass assistance, Scanner in)
 	{	
 		do // loop for type of arithmetic getting till it's valid
@@ -68,6 +71,7 @@ public class CAI // open the CAI class up
 		// similar to setDificulty(in.nextInt())
 	} // end promptProblemType(CAIClass, Scanner)
 	
+	// quiz does most of the 'heavy lifting' by quizing the user
 	private static void quiz(CAIClass assistance, Scanner in)
 	{
 		for(int problemLoop = 0; problemLoop < assistance.getTotal(); problemLoop++) // give student numProb problems
@@ -87,6 +91,7 @@ public class CAI // open the CAI class up
 			} // end for(i = 0; i < 10; i++) problem presentation loop
 	} // end quiz(CAIClass, Scanner)
 	
+	// printGrade simply enough prints the grade
 	private static void printGrade(CAIClass assistance)
 	{
 		System.out.printf("You scored %d/%d, that's a %f%%.\n",
@@ -95,6 +100,7 @@ public class CAI // open the CAI class up
 					  assistance.getPercent()); // print the score after 10 problems
 	} // end printGrade(CAIClass)
 	
+	// printMessage prints the (effectivly) "pass/fail message"
 	private static void printMessage(CAIClass assistance)
 	{
 		if(assistance.getPercent() < 75) // if they got less then a 75%
