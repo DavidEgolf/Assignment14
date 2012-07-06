@@ -10,12 +10,24 @@ public class CAI
 		
 		while(true) // forever...
 		{
-			do
+			do // loop for getting dificulty till it's valid
 			{
 				System.out.print("What dificulty would you like (positive number only): "); // prompt for dificulty
 			}while(!assistance.setDificulty(in.nextInt())); // read/send dificulty to assistance
 			// the previous statement has the logical not so that it returns true when it works,
 			// and false when it doesn't. it has to loop when true, thus not false
+			
+			do // loop for type of arithmetic getting till it's valid
+			{
+				System.out.println("\nWhat type of arithmetic would you like?"); // prompt
+				System.out.println("[1]: Addition"); // for 
+				System.out.println("[2]: Subtraction"); // the 
+				System.out.println("[3]: Multiplication"); // different
+				System.out.println("[4]: Integer Division"); // types
+				System.out.println("[5]: Mixed/All"); // of 
+				System.out.print("Selection (Valid Entry Only!): "); // arithmetic
+			}while(!assistance.setProblemType(in.nextInt())); // while not failed
+			// similar to setDificulty(in.nextInt())
 			
 			for(int problemLoop = 0; problemLoop < numProblems; problemLoop++) // give student numProb problems
 			{
